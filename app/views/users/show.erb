@@ -1,0 +1,17 @@
+<h1>User Show Page</h1>
+<h2>Profile Data</h2>
+<%= "Welcome, User Name: #{@user.username} Session ID: #{session[:user_id].to_s}"%><br>
+<%= "Bio: #{@user.bio}"%><br>
+<figure>
+  <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
+</figure>
+
+
+<h2>Items</h2>
+<% @user.items.each do |item| %>
+  <h2><%= item.name %></h2>
+  <figure>
+    <img style="max-width:200px;" src="<%= item.image_url %>" alt="item picture">
+  </figure>
+  <h2>Description: <%= item.description %> - <%= item.weight %> grams</h2>
+<% end %>
