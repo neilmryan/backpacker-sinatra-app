@@ -40,6 +40,7 @@
   }
 
   .wrapper {
+    border-radius: 1%;
     background: #fff;
     -moz-box-shadow: 0 0 40px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 40px rgba(0,0,0,.3);
@@ -50,8 +51,17 @@
     width: 85%;
   }
 
+  h2#un {
+    font-size: 60px;
+  }
+
+  h2#inv {
+    font-size: 40px;
+  }
+
   img#profile_pic {
     border: 2px solid;
+    border-radius: 3%;
     border-color: rgb(225, 225, 172);
   }
 
