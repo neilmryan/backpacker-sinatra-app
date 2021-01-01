@@ -6,37 +6,64 @@
     padding: 0;
   }
 
-  html, body {
+  html, body, a {
     height: 100%;
     width: 100%;
+    font-family: 'Redressed', cursive;
+    color: rgb(60, 60, 60);
+    text-align: center;
   }
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-image: url(../images/background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    /* background-color: lightblue;
     color: #333;
     font-family: Sans-Serif;
-    line-height: 18px;
+    line-height: 18px; */
+    }
+  .header {
+    height: 200px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    font-size: 160px;
+    color: rgb(60, 60, 60);
+    text-shadow: -1px 1px 10px rgb(48, 152, 219),
+          1px 1px 10px rgb(136, 138, 4),
+          1px -1px 0 rgb(136, 138, 4),
+          -1px -1px 0 rgb(136, 138, 4);
   }
 
   .wrapper {
     background: #fff;
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 0 40px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 40px rgba(0,0,0,.3);
+    box-shadow: 0 0 40px rgba(0,0,0,.3);
     margin: 16px auto;
-    max-width: 960px;
+    max-width: 560px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
   }
 
+  img#profile_pic {
+    border: 2px solid;
+    border-color: rgb(225, 225, 172);
+  }
+
   h1 {
-    font-size: 36px;
+    font-size: 180px;
     line-height: 54px;
+    margin-top: 80px;
   }
 
   h2 {
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid;
+    border-color: rgb(225, 225, 172);
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
@@ -77,7 +104,7 @@
   }
 
   footer.branding {
-    border-top: 2px solid #ccc;
+    border-top: 5px solid rgb(225, 225, 172);
     margin-top: 20px;
     padding-top: 20px;
   }
