@@ -1,0 +1,6 @@
+<h3>Item: <%= @item.name %></h3>
+<h3>Description: <%= @item.description %></h3>
+<h3>Weight: <%= @item.weight %> grams</h3>
+
+<img src="<%= @item.image_url %>" alt="">
+<h3>Item posted by: <a href="/users/<%= @user.slug %>"><%= @user.username %></a></h3>

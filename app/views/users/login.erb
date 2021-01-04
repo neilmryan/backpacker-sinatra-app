@@ -1,7 +1,9 @@
-<h2>Form to Login a User</h2>
 <form action="/login" method="POST">
 <input type="text" name="email" placeholder="Email:"><br>
 <input type="text" name="password" placeholder="Password:"><br><br>
 <input type="submit" name="submit" value="Log In!">
 </form><br>
-<%= "User ID: #{session[:user_id].to_s}"%>
+<a href="/">Home</a>
+<% if logged_in? && current_user.id == 1 %>
+<%= "User ID: #{session[:user_id].to_s}" %>
+<% end %>

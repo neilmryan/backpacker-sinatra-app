@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id])
       @user.bio = params[:bio]
       @user.save
-      erb :'users/show'
+      redirect "users/#{@user.slug}"
     end
   end
 

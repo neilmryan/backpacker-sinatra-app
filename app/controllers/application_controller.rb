@@ -10,7 +10,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :home
+    #binding.pry
+    if logged_in?
+      redirect "users/#{current_user.slug}"
+    else
+      erb :home
+    end
   end
 
   helpers do
@@ -51,6 +56,11 @@ class ApplicationController < Sinatra::Base
     else
       redirect "/login"
     end
+  end
+
+  get '/logout' do
+      session.clear
+      redirect '/login'
   end
 
 end

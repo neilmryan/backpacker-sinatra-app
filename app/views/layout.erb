@@ -22,10 +22,19 @@
   </div>
 
     <div class="wrapper">
+      <div style="margin-bottom: 20px; font-size: 20px;" class="nav">
+        <% if logged_in? %>
+          <a href="/items/new">New Item</a>
+          <a href="">Items</a>
+          <a href="">Backpackers</a>
+          <a href="/logout">Log Out</a>
+        <% end %>
+      </div>
+
         <%= yield %>
 
       <footer class="branding">
-        <small>&copy; 2020 <strong>Backpacker App Made By <a href="https://neilmryan.com/">Neil M. Ryan</a></strong></small>
+        <small>&copy; 2021 <strong>Backpacker App Made By <a href="https://neilmryan.com/">Neil M. Ryan</a></strong></small>
       </footer>
     </div>
 
