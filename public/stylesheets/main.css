@@ -6,11 +6,10 @@
     padding: 0;
   }
 
-  html, body, a, input {
+  html, body, input {
     height: 100%;
     width: 100%;
     font-family: 'Redressed', cursive;
-    color: rgb(60, 60, 60);
     text-align: center;
   }
 
@@ -31,8 +30,7 @@
     left: 0;
     width: 100%;
 
-    font-size: 160px;
-    color: rgb(60, 60, 60);
+    color: rgb(218, 115, 24);
     text-shadow: -1px 1px 10px rgb(48, 152, 219),
           1px 1px 10px rgb(136, 138, 4),
           1px -1px 0 rgb(136, 138, 4),
@@ -51,9 +49,6 @@
     width: 85%;
   }
 
-  .nav a {
-    font-size: 40px;
-  }
   input {
     font-size: 40px;
   }
@@ -72,15 +67,22 @@
     border-color: rgb(225, 225, 172);
   }
 
-  h1 {
+  .header h1 {
+    color: rgb(243 128, 26);
     font-size: 180px;
     line-height: 54px;
     margin-top: 80px;
+
+    text-shadow: -1px 1px 10px rgb(48, 152, 219),
+          1px 1px 10px rgb(136, 138, 4),
+          1px -1px 0 rgb(136, 138, 4),
+          -1px -1px 0 rgb(136, 138, 4);
   }
 
   h2 {
     border-bottom: 2px solid;
     border-color: rgb(225, 225, 172);
+    color: rgb(60, 60, 60);
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
@@ -93,6 +95,10 @@
 
   p {
     margin-bottom: 18px;
+  }
+
+  a:visited {
+    color: rgb(48, 152, 219);
   }
 
   .main {
