@@ -9,23 +9,33 @@
 <h2 id="un"><%= @user.username %></h2>
 <% if current_user == @user %>
   <figure>
-    <h5><a href="/profile">New Profile Image</a></h5>
-    <img id="profile_pic" style="max-width:200px;" src="<%= @user.image_url %>" alt="profile picture">
-    <h5><a href="/bio">Edit Bio</a></h5>
-    <h2><%= "\"#{@user.bio}\""%></h2>
+    <h5><a class="prof" href="/profile">New Profile Image</a></h5>
+    <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
+    <h5><a class="prof" href="/bio">Edit Bio</a></h5>
+    <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
   </figure>
 <% else %>
 <figure>
-    <img id="profile_pic" style="max-width:200px;" src="<%= @user.image_url %>" alt="profile picture">
-    <h2><%= "\"#{@user.bio}\""%></h2>
+    <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
+    <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
   </figure>
 <% end %>
 
-<h2 id="inv">Inventory</h2>
-<% @user.items.each do |item| %>
+<% if current_user == @user %>
+  <h2 id="inv">Your Items</h2>
+  <% @user.items.each do |item| %>
+    <figure>
+      <img src="<%= item.image_url %>" alt="item picture">
+    </figure>
+    <h2><%= item.name %> | <%= item.description %> | <%= item.weight %> grams </h2>
+  <% end %>
+<% else %>
+  <h2 id="inv"><%= @user.username %>'s items</h2>
+  <% @user.items.each do |item| %>
   <figure>
-    <img style="max-width:200px;" src="<%= item.image_url %>" alt="item picture">
+    <img src="<%= item.image_url %>" alt="item picture">
   </figure>
   <h2><%= item.name %> | <%= item.description %> | <%= item.weight %> grams </h2>
+  <% end %>
 
 <% end %>

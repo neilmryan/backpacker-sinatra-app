@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
   </head>
   <body>
 
@@ -24,10 +24,11 @@
     <div class="wrapper">
       <div style="margin-bottom: 20px; class="nav">
         <% if logged_in? %>
-          <a style="font-size: 28px;" href="/items/new">+Item</a>
-          <a style="font-size: 28px;" href=""> All Items</a>
-          <a style="font-size: 28px;" href="">Backpackers</a>
-          <a style="font-size: 28px;" href="/logout">Log Out</a>
+          <a href="/">Home</a>
+          <a href="/items/new">+Item</a>
+          <a href="/items">Items</a>
+          <a href="/users">Backpackers</a>
+          <a href="/logout">Log Out</a>
         <% end %>
       </div>
 

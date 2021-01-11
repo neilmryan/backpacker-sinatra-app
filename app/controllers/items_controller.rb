@@ -28,5 +28,10 @@ class ItemsController < ApplicationController
     erb :'/items/show'
   end
 
+  get '/items' do
+    @items = Item.all
+    erb :'items/index'
+  end
+
 
 end

@@ -9,7 +9,7 @@
   html, body, input {
     height: 100%;
     width: 100%;
-    font-family: 'Redressed', cursive;
+    font-family: 'Yusei Magic', sans-serif;
     text-align: center;
   }
 
@@ -24,13 +24,13 @@
     line-height: 18px; */
     }
   .header {
-    height: 200px;
+    height: 160px;
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
 
-    color: rgb(218, 115, 24);
+    color: rgb(243, 128, 26);
     text-shadow: -1px 1px 10px rgb(48, 152, 219),
           1px 1px 10px rgb(136, 138, 4),
           1px -1px 0 rgb(136, 138, 4),
@@ -49,16 +49,28 @@
     width: 85%;
   }
 
+  img {
+    max-width: 200px;
+  }
+
   input {
     font-size: 40px;
   }
 
   h2#un {
+    font-family: 'Yusei Magic', sans-serif;
     font-size: 60px;
   }
 
   h2#inv {
     font-size: 40px;
+    font-family: 'Yusei Magic', sans-serif;
+  }
+
+  h2#bio {
+    font-size: 24px;
+    font-family: 'Yusei Magic', sans-serif;
+    font-style: italic;
   }
 
   img#profile_pic {
@@ -67,19 +79,22 @@
     border-color: rgb(225, 225, 172);
   }
 
+  a.prof {
+    font-size: 16px;
+  }
+
   .header h1 {
-    color: rgb(243 128, 26);
-    font-size: 180px;
+    font-family: 'Yusei Magic', sans-serif;
+    color: rgb(243, 128, 26);
+    font-size: 130px;
     line-height: 54px;
     margin-top: 80px;
 
-    text-shadow: -1px 1px 10px rgb(48, 152, 219),
-          1px 1px 10px rgb(136, 138, 4),
-          1px -1px 0 rgb(136, 138, 4),
-          -1px -1px 0 rgb(136, 138, 4);
+    text-shadow: -1px 1px 80px rgb(46, 153, 140),
   }
 
   h2 {
+    font-family: 'Yusei Magic', sans-serif;
     border-bottom: 2px solid;
     border-color: rgb(225, 225, 172);
     color: rgb(60, 60, 60);
@@ -97,8 +112,25 @@
     margin-bottom: 18px;
   }
 
-  a:visited {
+  a {
+    margin: 10px;
+    font-size: 20px;
     color: rgb(48, 152, 219);
+    text-decoration: none;
+  }
+
+  h2#un a {
+    color: rgb(60, 60, 60);
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 60px;
+  }
+
+  h2#un a:hover {
+    color: rgb(243, 128, 26);
+  }
+
+  a:hover {
+    color: rgb(243, 128, 26);
   }
 
   .main {
@@ -131,6 +163,10 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+
+  .branding a {
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -138,12 +174,13 @@
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    width: auto;
+    width: 600px;
+    margin-left: 60px;
   }
 
   .content, .sidebar {
     float: none;
-    width: 100%;
+    width: 100%
   }
 
   .sidebar {

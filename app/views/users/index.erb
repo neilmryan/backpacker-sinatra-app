@@ -1,1 +1,6 @@
-<h2><%= "Welcome, #{@user.username.capitalize}! Session ID: #{session[:user_id].to_s}"%></h2>
+<h2>All Backpackers</h2>
+<% @users.each do |user| %>
+<h2 id="un"><a href="/users/<%= user.slug %>"><%= user.username %></h2></a>
+<img id="profile_pic" src="<%= user.image_url %>" alt="profile picture">
+<h2 id="bio">"<%= user.bio %>"</h2>
+<% end %>
