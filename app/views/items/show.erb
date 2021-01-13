@@ -2,5 +2,10 @@
 <h3>Description: <%= @item.description %></h3>
 <h3>Weight: <%= @item.weight %> grams</h3>
 
-<img src="<%= @item.image_url %>" alt="">
-<h3>Item posted by: <a href="/users/<%= @user.slug %>"><%= @user.username %></a></h3>
+<img src="<%= @item.image_url %>" alt=""><br>
+
+<% if current_user == @item.user %>
+<a href="/items/<%= @item.id %>/edit">Edit Item?</a> | <a href="">Delete Item?</a>
+<% else %>
+<h3>Item posted by:<a href="/users/<%= @item.user.slug %>"><%= @item.user.username %></a></h3>
+<% end %>

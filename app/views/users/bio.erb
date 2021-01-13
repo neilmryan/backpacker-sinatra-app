@@ -1,5 +1,5 @@
 <h2>Hi, <%= @user.username %>! Upload a short bio for your profile!</h2>
 <form action="/bio" method=POST>
-<input type="text" name="bio">
+<input type="text" name="bio" value="<%= @user.bio %>">
 <input type="submit">
 </form>

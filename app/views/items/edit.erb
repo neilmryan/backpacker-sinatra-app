@@ -1,0 +1,13 @@
+<h2>Edit Your Item</h2>
+<form action="/items/<%= @item.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<label for="name">Name:</label>
+<input type="text" name="name" placeholder="name:" value="<%= @item.name %>"><br><br>
+<label for="name">Description:</label>
+<input type="text" name="description" placeholder="description:" value="<%= @item.description %>"><br><br>
+<label for="name">Weight (grams):</label>
+<input type="text" name="weight" placeholder="weight in grams:" value="<%= @item.weight %>"><br><br>
+<label for="name">Image URL:</label>
+<input type="text" name="image_url" placeholder="image_url" value="<%= @item.image_url%>"><br><br>
+<input type="submit" value="Submit Changes">
+</form>

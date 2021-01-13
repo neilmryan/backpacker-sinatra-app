@@ -24,13 +24,23 @@ class ItemsController < ApplicationController
 
   get '/items/:id' do
     @item = Item.find(params[:id])
-    @user = User.find(session[:user_id])
     erb :'/items/show'
   end
 
   get '/items' do
     @items = Item.all
     erb :'items/index'
+  end
+
+  get '/items/:id/edit' do
+    @item = Item.find_by(id: params[:id])
+    erb :'items/edit'
+  end
+
+  patch '/items/:id' do
+    @item = Item.find_by(id: params[:id])
+    @item.update(name: params[:name], description: params[:description], weight: params[:weight], image_url: params[:image_url])
+    redirect "/items/#{@item.id}"
   end
 
 

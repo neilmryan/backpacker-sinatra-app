@@ -27,7 +27,7 @@
     <figure>
       <img src="<%= item.image_url %>" alt="item picture">
     </figure>
-    <h2><%= item.name %> | <%= item.description %> | <%= item.weight %> grams </h2>
+    <h2><a href="/items/<%= item.id %>"><%= item.name %></a> | <%= item.description %> | <%= item.weight %> grams </h2>
   <% end %>
 <% else %>
   <h2 id="inv"><%= @user.username %>'s items</h2>
@@ -35,7 +35,6 @@
   <figure>
     <img src="<%= item.image_url %>" alt="item picture">
   </figure>
-  <h2><%= item.name %> | <%= item.description %> | <%= item.weight %> grams </h2>
+  <h2><a href="/items/<%= item.id %>"><%= item.name %></a> | <%= item.description %> | <%= item.weight %> grams </h2>
   <% end %>
-
 <% end %>

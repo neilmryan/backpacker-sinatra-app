@@ -24,8 +24,9 @@ class ApplicationController < Sinatra::Base
       !!current_user
     end
 
+    #adding memoization per journal app walkthrough
     def current_user
-      User.find_by(id: session[:user_id])
+      @current_user ||= User.find_by(id: session[:user_id])
     end
 
   end

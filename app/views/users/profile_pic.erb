@@ -1,5 +1,5 @@
 <h2>Hi, <%= @user.username.capitalize %>! Upload an Image URL (image address) for your profile!</h2>
 <form action="/profile" method=POST>
-<input type="text" name="image_url">
+<input type="text" name="image_url" value="<%= @user.image_url %>">
 <input type="submit">
 </form>
