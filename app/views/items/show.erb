@@ -5,7 +5,13 @@
 <img src="<%= @item.image_url %>" alt=""><br>
 
 <% if current_user == @item.user %>
-<a href="/items/<%= @item.id %>/edit">Edit Item?</a> | <a href="">Delete Item?</a>
+<a href="/items/<%= @item.id %>/edit">Edit Item?</a><br><br>
+
+<form action="/items/<%= @item.id %>/delete" method="POST">
+<input type="hidden" name="_method" value="DELETE">
+<input style="max-width: 100px; font-size: 16px;" type="submit" value="Delete Item?">
+</form>
+
 <% else %>
 <h3>Item posted by:<a href="/users/<%= @item.user.slug %>"><%= @item.user.username %></a></h3>
 <% end %>

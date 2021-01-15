@@ -43,5 +43,11 @@ class ItemsController < ApplicationController
     redirect "/items/#{@item.id}"
   end
 
+  delete '/items/:id/delete' do
+    @item = Item.find_by(id: params[:id])
+    @user = @item.user
+    @item.destroy
+    redirect "users/#{@user.slug}"
+  end
 
 end
