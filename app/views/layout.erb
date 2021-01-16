@@ -21,6 +21,13 @@
     <h1>Backpacker</h1>
   </div>
 
+  <% if flash[:message] %>
+    <div>
+      <img style="border-radius: 5%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgDqIWMEipZJKuvc9i9elE7UwTbyTwgl9f5Q&usqp=CAU" alt="Bear">
+      <h1 style="color: white; text-decoration: underline;"><%=flash[:message]%></h1>
+    </div>
+  <% end %>
+
     <div class="wrapper">
       <div style="margin-bottom: 20px; class="nav">
         <% if logged_in? %>

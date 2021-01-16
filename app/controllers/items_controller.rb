@@ -43,6 +43,7 @@ class ItemsController < ApplicationController
       @item.update(name: params[:name], description: params[:description], weight: params[:weight], image_url: params[:image_url])
       redirect "/items/#{@item.id}"
     else
+      flash[:message] = "Sorry, \nyou can't edit an item you did not post."
       redirect "/items/#{@item.id}"
     end
   end
