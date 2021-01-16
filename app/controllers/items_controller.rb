@@ -39,15 +39,22 @@ class ItemsController < ApplicationController
 
   patch '/items/:id' do
     @item = Item.find_by(id: params[:id])
-    @item.update(name: params[:name], description: params[:description], weight: params[:weight], image_url: params[:image_url])
-    redirect "/items/#{@item.id}"
+    if current_user == @item.user
+      @item.update(name: params[:name], description: params[:description], weight: params[:weight], image_url: params[:image_url])
+      redirect "/items/#{@item.id}"
+    else
+      redirect "/items/#{@item.id}"
+    end
   end
 
   delete '/items/:id/delete' do
     @item = Item.find_by(id: params[:id])
-    @user = @item.user
-    @item.destroy
-    redirect "users/#{@user.slug}"
+    if current_user == @item.user
+      @item.destroy
+      redirect "users/#{@item.user.slug}"
+    else
+      redirect "users/#{@item.user.slug}"
+    end
   end
 
 end

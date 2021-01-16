@@ -3,7 +3,7 @@
 <input type="text" name="password" placeholder="Password:"><br><br>
 <input type="submit" name="submit" value="Log In!">
 </form><br>
-<a href="/">Home</a>
+<a href="/">Back</a>
 <% if logged_in? && current_user.id == 1 %>
 <%= "User ID: #{session[:user_id].to_s}" %>
 <% end %>
