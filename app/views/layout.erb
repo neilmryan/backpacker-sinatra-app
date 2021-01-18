@@ -21,23 +21,24 @@
     <h1>Backpacker</h1>
   </div>
 
-  <% if flash[:message] %>
-    <div>
-      <img style="border-radius: 5%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgDqIWMEipZJKuvc9i9elE7UwTbyTwgl9f5Q&usqp=CAU" alt="Bear">
-      <h1 style="color: white; text-decoration: underline;"><%=flash[:message]%></h1>
-    </div>
-  <% end %>
-
     <div class="wrapper">
+
       <div style="margin-bottom: 20px; class="nav">
         <% if logged_in? %>
           <a href="/">Home</a>
-          <a href="/items/new">+Item</a>
-          <a href="/items">Items</a>
-          <a href="/users">Backpackers</a>
+          <a href="/items/index">All Items</a>
+          <a href="/packs/index">All Packs</a>
+          <a href="/users/index">All Backpackers</a>
           <a href="/logout">Log Out</a>
         <% end %>
       </div>
+
+      <% if flash[:message] %>
+        <div>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgDqIWMEipZJKuvc9i9elE7UwTbyTwgl9f5Q&usqp=CAU" alt="Bear">
+          <h1><%=flash[:message]%></h1>
+        </div><br>
+      <% end %>
 
         <%= yield %>
 

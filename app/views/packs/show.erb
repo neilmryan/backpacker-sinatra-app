@@ -1,0 +1,32 @@
+<% if current_user == @pack.user %>
+
+  <h2><a href="/users/<%= @pack.user.slug %>/packs">Go To Your Packs</a></h2>
+  <h2><%= @pack.user.username %>'s <%= @pack.trip_name %> Pack<a href="/packs/<%= @pack.id %>/edit">Edit Pack?</a></h2>
+
+  <% if @pack.image_url %>
+    <img style="max-width:200px;" src="<%= @pack.image_url %>" alt="pack pic">
+  <% end %>
+
+    <h3>Duration: <%= @pack.length %> day/s</h3>
+    <h3>Weather: <%= @pack.weather %></h3>
+    <h3>Weight: <%= @pack.weight %> grams</h3><br>
+
+    <form action="/packs/<%= @pack.id %>/delete" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input style="max-width: 100px; font-size: 16px;" type="submit" value="Delete Pack?">
+    </form>
+
+<% else %>
+
+  <h2><a href="/users/<%= @pack.user.slug %>/packs">Visit <%= @pack.user.username%>'s Packs Page!</a></h2>
+  <h2><%= @pack.user.username %>'s <%= @pack.trip_name %> Pack</h2>
+
+  <% if @pack.image_url %>
+    <img style="max-width:200px;" src="<%= @pack.image_url %>" alt="pack pic">
+  <% end %>
+
+    <h3>Duration: <%= @pack.length %> day/s</h3>
+    <h3>Weather: <%= @pack.weather %></h3>
+    <h3>Weight: <%= @pack.weight %> grams</h3>
+
+<% end %>

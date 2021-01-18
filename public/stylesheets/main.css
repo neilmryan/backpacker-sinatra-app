@@ -63,11 +63,6 @@
     font-size: 60px;
   }
 
-  h2#inv {
-    font-size: 40px;
-    font-family: 'Yusei Magic', sans-serif;
-  }
-
   h2#bio {
     font-size: 24px;
     font-family: 'Yusei Magic', sans-serif;
@@ -114,7 +109,7 @@
   }
 
   a {
-    margin: 10px;
+    margin: 6px;
     font-size: 20px;
     color: rgb(48, 152, 219);
     text-decoration: none;

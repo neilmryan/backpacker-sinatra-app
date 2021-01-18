@@ -1,0 +1,9 @@
+<h2>Edit Your Pack</h2>
+<form action="/packs/<%= @pack.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<input type="text" name="trip_name" placeholder="trip name:" value="<%= @pack.trip_name %>"><br>
+<input type="text" name="length" placeholder="length in days:" value="<%= @pack.length %>"><br>
+<input type="text" name="weather" placeholder="weather:" value="<%= @pack.weather %>"><br>
+<input type="text" name="image_url" placeholder="image_url" value="<%= @pack.image_url %>"><br><br>
+<input type="submit" value="Submit Changes">
+</form>

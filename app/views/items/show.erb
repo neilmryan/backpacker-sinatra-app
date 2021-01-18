@@ -1,17 +1,32 @@
-<h3>Item: <%= @item.name %></h3>
-<h3>Description: <%= @item.description %></h3>
-<h3>Weight: <%= @item.weight %> grams</h3>
-
-<img src="<%= @item.image_url %>" alt=""><br>
-
 <% if current_user == @item.user %>
-<a href="/items/<%= @item.id %>/edit">Edit Item?</a><br><br>
 
-<form action="/items/<%= @item.id %>/delete" method="POST">
-<input type="hidden" name="_method" value="DELETE">
-<input style="max-width: 100px; font-size: 16px;" type="submit" value="Delete Item?">
-</form>
+  <h2><a href="/users/<%= @item.user.slug %>">Visit Your Profile Page!</a></h2>
+  <h2>Your <%= @item.name %><a href="/items/<%= @item.id %>/edit">Edit Item?</a></h2>
+
+  <% if @item.image_url %>
+  <img src="<%= @item.image_url %>" alt=""><br>
+  <% end %>
+
+  <h3>Item: <%= @item.name %></h3>
+  <h3>Description: <%= @item.description %></h3>
+  <h3>Weight: <%= @item.weight %> grams</h3><br>
+
+  <form action="/items/<%= @item.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input style="max-width: 100px; font-size: 16px;" type="submit" value="Delete Item?">
+  </form>
 
 <% else %>
-<h3>Item posted by:<a href="/users/<%= @item.user.slug %>"><%= @item.user.username %></a></h3>
+
+  <h2><a href="/users/<%= @item.user.slug %>">Visit <%= @item.user.slug %>'s Profile Page!</a></h2>
+  <h2><%= @item.user.username %>'s <%= @item.name %></h2>
+
+  <% if @item.image_url %>
+  <img src="<%= @item.image_url %>" alt=""><br>
+  <% end %>
+
+  <h3>Item: <%= @item.name %></h3>
+  <h3>Description: <%= @item.description %></h3>
+  <h3>Weight: <%= @item.weight %> grams</h3>
+
 <% end %>

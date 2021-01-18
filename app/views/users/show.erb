@@ -6,35 +6,35 @@
 <h2> Current user is not the same as @user</h2>
 <% end %>
 -->
+
 <h2 id="un"><%= @user.username %></h2>
-<% if current_user == @user %>
-  <figure>
-    <h5><a class="prof" href="/profile">New Profile Image</a></h5>
-    <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
-    <h5><a class="prof" href="/bio">Edit Bio</a></h5>
-    <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
-  </figure>
-<% else %>
-<figure>
-    <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
-    <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
-  </figure>
-<% end %>
 
 <% if current_user == @user %>
-  <h2 id="inv">Your Items</h2>
+  <a href="/profile">New Profile Image</a>
+  <a href="/bio">Edit Bio</a>
+  <figure>
+    <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
+    <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
+  </figure>
+  <h2><a href="<%= @user.slug %>/packs">Visit Your Packs Page!</a></h2>
+  <h2>Your Items<a href="/items/new">Create New Item</a></h2>
   <% @user.items.each do |item| %>
     <figure>
       <img src="<%= item.image_url %>" alt="item picture">
     </figure>
-    <h2><a href="/items/<%= item.id %>"><%= item.name %></a> | <%= item.description %> | <%= item.weight %> grams </h2>
+    <h2><a href="/items/<%= item.id %>"><%= item.name %></a></h2>
   <% end %>
 <% else %>
-  <h2 id="inv"><%= @user.username %>'s items</h2>
+  <figure>
+    <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
+    <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
+  </figure>
+  <h2><a href="<%= @user.slug %>/packs">Visit <%= @user.username %>'s Packs Page!</a></h2>
+  <h2 id="inv"><%= @user.username %>'s Items</h2>
   <% @user.items.each do |item| %>
   <figure>
     <img src="<%= item.image_url %>" alt="item picture">
   </figure>
-  <h2><a href="/items/<%= item.id %>"><%= item.name %></a> | <%= item.description %> | <%= item.weight %> grams </h2>
+  <h2><a href="/items/<%= item.id %>"><%= item.name %></a></h2>
   <% end %>
 <% end %>

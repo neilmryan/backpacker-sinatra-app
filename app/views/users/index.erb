@@ -1,6 +1,8 @@
 <h2>All Backpackers</h2>
 <% @users.each do |user| %>
-<h2 id="un"><a href="/users/<%= user.slug %>"><%= user.username %></h2></a>
-<img id="profile_pic" src="<%= user.image_url %>" alt="profile picture">
-<h2 id="bio">"<%= user.bio %>"</h2>
+
+<% if user.image_url %>
+  <img id="profile_pic" src="<%= user.image_url %>" alt="profile picture">
+<% end %>
+<h2><a href="/users/<%= user.slug %>"><%= user.username %></h2></a>
 <% end %>

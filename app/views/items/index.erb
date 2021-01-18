@@ -1,10 +1,9 @@
 <h2>All Backpacker's Items</h2>
 
 <% @items.each do |item| %>
-  <h3>Item: <a href='/items/<%= item.id %>'><%= item.name %></a></h3>
-  <h3>Description: <%= item.description %></h3>
-  <h3>Weight: <%= item.weight %> grams</h3>
 
-<img style="max-width:200px;" src="<%= item.image_url %>" alt="item pic">
-<h2>Item posted by: <a href="/users/<%= item.user.slug %>"><%= item.user.username %></a></h2>
+<img src="<%= item.image_url %>" alt="item pic">
+<h3><a href='/items/<%= item.id %>'><%= item.name %></a></h3>
+
+<h2></h2>
 <% end %>

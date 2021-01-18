@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 
   #route to find a user's show page by slug
+  get '/users/index' do
+    @users = User.all
+    erb :'users/index'
+  end
+
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
     erb :'users/show'
@@ -38,9 +43,10 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/users' do
-    @users = User.all
-    erb :'users/index'
+  get '/users/:slug/packs' do
+    @user = User.find_by_slug(params[:slug])
+    @packs = @user.packs
+    erb :'users/packs'
   end
 
 end
