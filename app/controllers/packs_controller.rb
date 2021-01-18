@@ -21,6 +21,18 @@ class PacksController < ApplicationController
     end
   end
 
+  get '/packs/:id/blurb' do
+    @pack = Pack.find_by(id: params[:id])
+    erb :'packs/new_blurb'
+  end
+
+  post '/packs/:id/blurb' do
+    @pack = Pack.find_by(id: params[:id])
+    @pack.blurb = params[:blurb]
+    @pack.save
+    redirect "/packs/#{@pack.id}"
+  end
+
   get '/packs/index' do
     @packs = Pack.all
     erb :'packs/index'
@@ -39,7 +51,7 @@ class PacksController < ApplicationController
   patch '/packs/:id' do
     @pack = Pack.find_by(id: params[:id])
     if current_user == @pack.user
-      @pack.update(trip_name: params[:trip_name], length: params[:length], weather: params[:weather], image_url: params[:image_url])
+      @pack.update(trip_name: params[:trip_name], length: params[:length], weather: params[:weather], image_url: params[:image_url], blurb: params[:blurb])
       redirect "/packs/#{@pack.id}"
     else
       flash[:message] = "Sorry, \nyou can't edit a pack you did not create."
