@@ -13,10 +13,19 @@ class PacksController < ApplicationController
     if logged_in?
       @user = current_user
       @pack = Pack.new(trip_name: params[:trip_name], length: params[:length], weather: params[:weather], image_url: params[:image_url])
+
+      @packed_item_ids = params[:pack][:item_ids]
+
+      @packed_item_ids.each do |item_id|
+        @pack.items << Item.find_by(id: item_id)
+      end
+
+      @quantity_items = params[:quantity][:items]
+      @pack.quantity_string = @quantity_items.join(",");
+
       @user.packs.push(@pack)
       @user.save
-      #binding.pry
-      redirect "users/#{@user.slug}/packs"
+      redirect "packs/#{@pack.id}"
     else
       redirect '/login'
     end
@@ -41,6 +50,17 @@ class PacksController < ApplicationController
 
   get '/packs/:id' do
     @pack = Pack.find_by(id: params[:id])
+  
+    #@item_quantity = {}
+
+    #@packed_items.each_with_index do |item, index|
+    #  if @quantity_items[index] != ""
+    #    @item_quantity[item] = @quantity_items[index]
+    #  end
+    #  @item_quantity
+    #end
+
+
     erb :'packs/show'
   end
 

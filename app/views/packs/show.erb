@@ -17,6 +17,11 @@
       <h3><a href="/packs/<%= @pack.id %>/blurb">Add Blurb!</a></h3><br>
     <% end %>
 
+    <h2>Packed Items</h2>
+    <% @pack.items.each do |item| %>
+      <h3><%= item.name %></h3>
+    <% end %><br>
+
     <form action="/packs/<%= @pack.id %>/delete" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input style="max-width: 100px; font-size: 16px;" type="submit" value="Delete Pack?">
@@ -38,5 +43,10 @@
     <% if @pack.blurb %>
       <h3>"<%=@pack.blurb%>"</h3><br>
     <% end %>
+
+    <h2>Packed Items</h2>
+    <% @pack.items.each do |item| %>
+      <h3><%= item.name %></h3>
+    <% end %><br>
 
 <% end %>
