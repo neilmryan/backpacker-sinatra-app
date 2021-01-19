@@ -6,7 +6,7 @@
     padding: 0;
   }
 
-  html, body, input {
+  html, body {
     height: 100%;
     width: 100%;
     font-family: 'Yusei Magic', sans-serif;
@@ -49,6 +49,32 @@
     width: 85%;
   }
 
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+
+  input {
+    height: 100%;
+    width: 100%;
+    font-family: 'Yusei Magic', sans-serif;
+    text-align: center
+  }
+
+
+  input[type='checkbox'] {
+    width: 30px;
+    height: 30px;
+  }
+
+  input[type='number'] {
+    width: 40px;
+    height: 30px;
+    font-size: 20px;
+  }
+  
   img {
     max-width: 200px;
     margin-top: 10px;

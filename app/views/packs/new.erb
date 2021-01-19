@@ -1,8 +1,23 @@
-<h2>Create Your Pack</h2>
+<h2>Create Your New Pack</h2>
 <form action="/packs" method="POST">
 <input type="text" name="trip_name" placeholder="trip name:"><br>
 <input type="text" name="length" placeholder="length in days:"><br>
 <input type="text" name="weather" placeholder="weather:"><br>
 <input type="text" name="image_url" placeholder="image_url"><br><br>
-<input type="submit" value="Create Item">
+
+<h3>Add Your Items</h3><br>
+<% @items.each do |item| %>
+
+  <div class="container">
+    <div class="cell cell-1"><input type="checkbox" name="pack[item_ids][]" id="<%= item.id %>" value="<%= item.id %>"></div>
+    <div class="cell cell-2"><label class="checkbox_label" for="<%= item.id %>"><%= item.name %></label></div>
+    <div class="cell cell-3"><label class="quantity_label" for="quantity">How Many?:</label></div>
+    <div class="cell cell-4"><input type="number" id="quantity" name="quantity" min="1" max="5"></div>
+  </div>
+
+  <h2></h2>
+
+<% end %><br>
+
+<input type="submit" value="Create Pack">
 </form>

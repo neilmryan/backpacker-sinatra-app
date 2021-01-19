@@ -2,6 +2,7 @@ class PacksController < ApplicationController
 
   get '/packs/new' do
     if logged_in?
+      @items = current_user.items
       erb :'packs/new'
     else
       redirect '/login'
