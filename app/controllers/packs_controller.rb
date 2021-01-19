@@ -50,9 +50,8 @@ class PacksController < ApplicationController
 
   get '/packs/:id' do
     @pack = Pack.find_by(id: params[:id])
-  
-    #@item_quantity = {}
 
+    @quantity_array = @pack.quantity_string.split(",")
     #@packed_items.each_with_index do |item, index|
     #  if @quantity_items[index] != ""
     #    @item_quantity[item] = @quantity_items[index]

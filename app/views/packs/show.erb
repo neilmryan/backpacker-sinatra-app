@@ -18,9 +18,11 @@
     <% end %>
 
     <h2>Packed Items</h2>
-    <% @pack.items.each do |item| %>
-      <h3><%= item.name %></h3>
+    <% @pack.items.each_with_index do |item, index| %>
+      <h3><%= item.name %> Quantity: <%= @quantity_array[index] %></h3>
     <% end %><br>
+
+
 
     <form action="/packs/<%= @pack.id %>/delete" method="POST">
     <input type="hidden" name="_method" value="DELETE">
@@ -45,8 +47,8 @@
     <% end %>
 
     <h2>Packed Items</h2>
-    <% @pack.items.each do |item| %>
-      <h3><%= item.name %></h3>
+    <% @pack.items.each_with_index do |item, index| %>
+      <h3><%= item.name %> Quantity: <%= @quantity_array[index] %></h3>
     <% end %><br>
 
 <% end %>
