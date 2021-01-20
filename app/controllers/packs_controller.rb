@@ -14,12 +14,13 @@ class PacksController < ApplicationController
       @user = current_user
       @pack = Pack.new(trip_name: params[:trip_name], length: params[:length], weather: params[:weather], image_url: params[:image_url])
 
+      #find items by id and load them into the packs items array
       @packed_item_ids = params[:pack][:item_ids]
-
       @packed_item_ids.each do |item_id|
         @pack.items << Item.find_by(id: item_id)
       end
 
+      #convert quantity array to string, store it in the db and make instance variable in '/packs/:id'
       @quantity_items = params[:quantity][:items]
       @pack.quantity_string = @quantity_items.join(",");
 
@@ -51,14 +52,25 @@ class PacksController < ApplicationController
   get '/packs/:id' do
     @pack = Pack.find_by(id: params[:id])
 
-    @quantity_array = @pack.quantity_string.split(",")
+    #grab the quanity string from the db and convert to array
+    if @pack.quantity_string
+      @quantity_array = @pack.quantity_string.split(",")
+    end
+    #calculate the total pack weigtht
+    @total_pack_grams = 0;
+    @pack.items.each_with_index do |item, index|
+    @total_pack_grams += item.weight * @quantity_array[index].to_i;
+    end
+
+    #convert grams to pounds and ounces formula: lb = g * 0.0022046
+    @total_pack_pounds = @total_pack_grams * 0.0022046;
+
     #@packed_items.each_with_index do |item, index|
     #  if @quantity_items[index] != ""
     #    @item_quantity[item] = @quantity_items[index]
     #  end
     #  @item_quantity
     #end
-
 
     erb :'packs/show'
   end

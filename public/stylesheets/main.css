@@ -57,22 +57,18 @@
 
   .cell-1 {
     grid-row: 1/8;
-    border: 1px solid blue;
   }
 
   .cell-2 {
     grid-row: 4/8;
-    border: 1px solid red;
   }
 
   .cell-3 {
     grid-row: 2/8;
-    border: 1px solid green;
   }
 
   .cell-4 {
     grid-row: 1/8;
-    border: 1px solid yellow;
   }
 
   input {

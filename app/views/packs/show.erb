@@ -9,7 +9,6 @@
 
     <h3>Duration: <%= @pack.length %> day/s</h3>
     <h3>Weather: <%= @pack.weather %></h3>
-    <h3>Weight: <%= @pack.weight %> grams</h3><br>
 
     <% if @pack.blurb %>
       <h3>"<%=@pack.blurb%>"</h3><br>
@@ -34,10 +33,11 @@
         <td><%= item.weight %>g</td>
       </tr>
       <% end %>
-    <h3>Total Items:</h3>
     </table>
-
-    <h3>Total Items: Total Weight:</h3>
+    <h2></h2>
+    <h3>Packed Items: <%= @pack.items.count %></h3>
+    <h3>Total Pack Weight: <%= @total_pack_grams %> grams</h3>
+    <h3>Total Pack Weight: <%= @total_pack_pounds.round(2) %> pounds</h3>
     <h2></h2>
 
     <form action="/packs/<%= @pack.id %>/delete" method="POST">
@@ -66,19 +66,24 @@
 
     <table style="width:100%">
       <tr>
+        <th>Image</th>
         <th>Item</th>
         <th>Quantity</th>
         <th>Weight</th>
       </tr>
       <% @pack.items.each_with_index do |item, index| %>
       <tr>
+        <td><img style="max-width: 40px" src="<%= item.image_url %>" alt=""></td>
         <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
         <td><%= @quantity_array[index] %></td>
         <td><%= item.weight %>g</td>
       </tr>
       <% end %>
     </table>
-
+    <h2></h2>
+    <h3>Packed Items: <%= @pack.items.count %></h3>
+    <h3>Total Pack Weight: <%= @total_pack_grams %> grams</h3>
+    <h3>Total Pack Weight: <%= @total_pack_pounds.round(2) %> pounds</h3>
     <h2></h2>
 
 <% end %>

@@ -4,7 +4,7 @@
   <h2>Your Packs<a href="/packs/new">Create New Pack</a></h2>
 
   <% @packs.each do |pack| %>
-    <% if pack.image_url %>
+    <% if pack.image_url != "" %>
       <img src="<%= pack.image_url %>" alt="pack pic">
     <% end %>
     <h2><a href="/packs/<%= pack.id %>"><%=pack.trip_name%></a></h2>
@@ -15,7 +15,7 @@
   <h2><%= @user.username %>'s Packs</h2>
 
   <% @packs.each do |pack| %>
-    <% if pack.image_url %>
+    <% if pack.image_url != "" %>
       <img src="<%= pack.image_url %>" alt="pack pic">
     <% end %>
     <h2><a href="/packs/<%= pack.id %>"><%=pack.trip_name%></a></h2>
