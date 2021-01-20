@@ -3,7 +3,7 @@
   <h2><a href="/users/<%= @pack.user.slug %>/packs">Go To Your Packs</a></h2>
   <h2><%= @pack.user.username %>'s <%= @pack.trip_name %> Pack<a href="/packs/<%= @pack.id %>/edit">Edit Pack?</a></h2>
 
-  <% if @pack.image_url %>
+  <% if @pack.image_url != "" %>
     <img style="max-width:200px;" src="<%= @pack.image_url %>" alt="pack pic">
   <% end %>
 
@@ -18,11 +18,27 @@
     <% end %>
 
     <h2>Packed Items</h2>
-    <% @pack.items.each_with_index do |item, index| %>
-      <h3><%= item.name %> Quantity: <%= @quantity_array[index] %></h3>
-    <% end %><br>
 
+    <table style="width:100%">
+      <tr>
+        <th>Image</th>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Weight</th>
+      </tr>
+      <% @pack.items.each_with_index do |item, index| %>
+      <tr>
+        <td><img style="max-width: 40px" src="<%= item.image_url %>" alt=""></td>
+        <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+        <td><%= @quantity_array[index] %></td>
+        <td><%= item.weight %>g</td>
+      </tr>
+      <% end %>
+    <h3>Total Items:</h3>
+    </table>
 
+    <h3>Total Items: Total Weight:</h3>
+    <h2></h2>
 
     <form action="/packs/<%= @pack.id %>/delete" method="POST">
     <input type="hidden" name="_method" value="DELETE">
@@ -34,8 +50,8 @@
   <h2><a href="/users/<%= @pack.user.slug %>/packs">Visit <%= @pack.user.username%>'s Packs Page!</a></h2>
   <h2><%= @pack.user.username %>'s <%= @pack.trip_name %> Pack</h2>
 
-  <% if @pack.image_url %>
-    <img style="max-width:200px;" src="<%= @pack.image_url %>" alt="pack pic">
+  <% if @pack.image_url != "" %>
+    <img style="max-width:200px;" src="<%= @pack.image_url %>" alt="">
   <% end %>
 
     <h3>Duration: <%= @pack.length %> day/s</h3>
@@ -47,8 +63,22 @@
     <% end %>
 
     <h2>Packed Items</h2>
-    <% @pack.items.each_with_index do |item, index| %>
-      <h3><%= item.name %> Quantity: <%= @quantity_array[index] %></h3>
-    <% end %><br>
+
+    <table style="width:100%">
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Weight</th>
+      </tr>
+      <% @pack.items.each_with_index do |item, index| %>
+      <tr>
+        <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+        <td><%= @quantity_array[index] %></td>
+        <td><%= item.weight %>g</td>
+      </tr>
+      <% end %>
+    </table>
+
+    <h2></h2>
 
 <% end %>

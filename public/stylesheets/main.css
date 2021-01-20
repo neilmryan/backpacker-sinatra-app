@@ -48,7 +48,7 @@
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
   }
-
+  /*container for pack input form*/
   .container {
     display: grid;
     grid-template-columns: 1fr 4fr 2fr 1fr;
@@ -57,18 +57,22 @@
 
   .cell-1 {
     grid-row: 1/8;
+    border: 1px solid blue;
   }
 
   .cell-2 {
     grid-row: 4/8;
+    border: 1px solid red;
   }
 
   .cell-3 {
     grid-row: 2/8;
+    border: 1px solid green;
   }
 
   .cell-4 {
     grid-row: 1/8;
+    border: 1px solid yellow;
   }
 
   input {
