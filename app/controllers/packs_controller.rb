@@ -66,6 +66,14 @@ class PacksController < ApplicationController
     #convert grams to pounds and ounces formula: lb = g * 0.0022046
     @total_pack_pounds = @total_pack_grams * 0.0022046;
 
+    #total number of items
+    @total_pack_items = 0;
+    @pack.user.items.each_with_index do |item, index|
+      if @pack.items.include?(item)
+        @total_pack_items += 1 * @quantity_array[index].to_i;
+      end
+    end
+
     erb :'packs/show'
   end
 
@@ -74,6 +82,8 @@ class PacksController < ApplicationController
     #grab the quanity string from the db and convert to array
     if @pack.quantity_string
       @quantity_array = @pack.quantity_string.split(",")
+    else
+      @quantity_array = [];
     end
 
     erb :'packs/edit'

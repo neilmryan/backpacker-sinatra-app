@@ -32,11 +32,11 @@
     </table>
     <h2></h2>
 
-    <h3>Packed Items: <%= @pack.items.count %></h3>
+    <h3>Packed Items: <%= @total_pack_items %></h3>
     <h3>Total Pack Weight: <%= @total_pack_grams %> grams, <%= @total_pack_pounds.round(2) %> pounds</h3><br>
     <h2></h2>
 
-    <% if @pack.blurb %>
+    <% if @pack.blurb != "" %>
       <h3>"<%=@pack.blurb%>"</h3><br>
     <% else %>
       <h3><a href="/packs/<%= @pack.id %>/blurb">Add Blurb!</a></h3><br>
@@ -82,7 +82,11 @@
     </table>
     <h2></h2>
 
-    <% if @pack.blurb %>
+    <h3>Packed Items: <%= @total_pack_items %></h3>
+    <h3>Total Pack Weight: <%= @total_pack_grams %> grams, <%= @total_pack_pounds.round(2) %> pounds</h3><br>
+    <h2></h2>
+
+    <% if @pack.blurb != "" %>
       <h3>"<%=@pack.blurb%>"</h3><br>
     <% else %>
       <h3><a href="/packs/<%= @pack.id %>/blurb">Add Blurb!</a></h3><br>
