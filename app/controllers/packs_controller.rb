@@ -71,7 +71,6 @@ class PacksController < ApplicationController
     #  end
     #  @item_quantity
     #end
-
     erb :'packs/show'
   end
 
@@ -84,6 +83,19 @@ class PacksController < ApplicationController
     @pack = Pack.find_by(id: params[:id])
     if current_user == @pack.user
       @pack.update(trip_name: params[:trip_name], length: params[:length], weather: params[:weather], image_url: params[:image_url], blurb: params[:blurb])
+
+      #find items by id and load them into the packs items array
+      @packed_item_ids = params[:pack][:item_ids]
+      @packed_item_ids.each do |item_id|
+        @pack.items << Item.find_by(id: item_id)
+      end
+
+      #convert quantity array to string, store it in the db and make instance variable in '/packs/:id'
+      @quantity_items = params[:quantity][:items]
+      @pack.quantity_string = @quantity_items.join(",");
+
+      current_user.packs.push(@pack)
+      current_user.save
       redirect "/packs/#{@pack.id}"
     else
       flash[:message] = "Sorry, \nyou can't edit a pack you did not create."

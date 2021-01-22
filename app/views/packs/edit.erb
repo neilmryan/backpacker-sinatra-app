@@ -6,5 +6,40 @@
 <input type="text" name="weather" placeholder="weather:" value="<%= @pack.weather %>"><br>
 <input type="text" name="image_url" placeholder="image_url" value="<%= @pack.image_url %>"><br>
 <textarea style="width: 100%; font-size: 20px;" name="blurb" placeholder="Write your blurb here..." id="" rows="10"><%= @pack.blurb %></textarea><br>
+
+<h3>Edit Your Items</h3><br>
+
+<% if @pack.items.count == 0%>
+
+  <% @pack.user.items.each do |item| %>
+
+    <div class="container">
+      <div class="cell cell-1"><input type="checkbox" name="pack[item_ids][]" id="<%= item.id %>" value="<%= item.id %>" <%= 'checked' if @pack.items.include?(item) %>></div>
+      <div class="cell cell-2"><label for="<%= item.id %>"><%= item.name %></label></div>
+      <div class="cell cell-3"><label for="quantity">How Many?:</label></div>
+      <div class="cell cell-4"><input type="number" name="quantity[items][]" id="quantity" value="1" min="1" max="100"></div>
+    </div>
+
+    <h2></h2>
+
+  <% end %><br>
+
+<% else %>
+
+  <% @pack.items.each do |item| %>
+
+    <div class="container">
+      <div class="cell cell-1"><input type="checkbox" name="pack[item_ids][]" id="<%= item.id %>" value="<%= item.id %>" <%= 'checked' if @pack.items.include?(item) %>></div>
+      <div class="cell cell-2"><label for="<%= item.id %>"><%= item.name %></label></div>
+      <div class="cell cell-3"><label for="quantity">How Many?:</label></div>
+      <div class="cell cell-4"><input type="number" name="quantity[items][]" id="quantity" value="1" min="1" max="100"></div>
+    </div>
+
+    <h2></h2>
+
+  <% end %><br>
+
+<% end %>
+
 <input type="submit" value="Submit Changes">
 </form>

@@ -4,17 +4,11 @@
   <h2><%= @pack.user.username %>'s <%= @pack.trip_name %> Pack<a href="/packs/<%= @pack.id %>/edit">Edit Pack?</a></h2>
 
   <% if @pack.image_url != "" %>
-    <img style="max-width:200px;" src="<%= @pack.image_url %>" alt="pack pic">
+    <img style="max-width:400px;" src="<%= @pack.image_url %>" alt="pack pic">
   <% end %>
 
     <h3>Duration: <%= @pack.length %> day/s</h3>
-    <h3>Weather: <%= @pack.weather %></h3>
-
-    <% if @pack.blurb %>
-      <h3>"<%=@pack.blurb%>"</h3><br>
-    <% else %>
-      <h3><a href="/packs/<%= @pack.id %>/blurb">Add Blurb!</a></h3><br>
-    <% end %>
+    <h3>Weather: <%= @pack.weather %></h3><br>
 
     <h2>Packed Items</h2>
 
@@ -36,8 +30,14 @@
     </table>
     <h2></h2>
     <h3>Packed Items: <%= @pack.items.count %></h3>
-    <h3>Total Pack Weight: <%= @total_pack_grams %> grams</h3>
-    <h3>Total Pack Weight: <%= @total_pack_pounds.round(2) %> pounds</h3>
+    <h3>Total Pack Weight: <%= @total_pack_grams %> grams, <%= @total_pack_pounds.round(2) %> pounds</h3><br>
+    <h2></h2>
+
+    <% if @pack.blurb %>
+      <h3>"<%=@pack.blurb%>"</h3><br>
+    <% else %>
+      <h3><a href="/packs/<%= @pack.id %>/blurb">Add Blurb!</a></h3><br>
+    <% end %>
     <h2></h2>
 
     <form action="/packs/<%= @pack.id %>/delete" method="POST">
@@ -51,16 +51,11 @@
   <h2><%= @pack.user.username %>'s <%= @pack.trip_name %> Pack</h2>
 
   <% if @pack.image_url != "" %>
-    <img style="max-width:200px;" src="<%= @pack.image_url %>" alt="">
+    <img style="max-width:400px;" src="<%= @pack.image_url %>" alt="">
   <% end %>
 
     <h3>Duration: <%= @pack.length %> day/s</h3>
-    <h3>Weather: <%= @pack.weather %></h3>
-    <h3>Weight: <%= @pack.weight %> grams</h3><br>
-
-    <% if @pack.blurb %>
-      <h3>"<%=@pack.blurb%>"</h3><br>
-    <% end %>
+    <h3>Weather: <%= @pack.weather %></h3><br>
 
     <h2>Packed Items</h2>
 
@@ -82,8 +77,14 @@
     </table>
     <h2></h2>
     <h3>Packed Items: <%= @pack.items.count %></h3>
-    <h3>Total Pack Weight: <%= @total_pack_grams %> grams</h3>
-    <h3>Total Pack Weight: <%= @total_pack_pounds.round(2) %> pounds</h3>
+    <h3>Total Pack Weight: <%= @total_pack_grams %> grams, <%= @total_pack_pounds.round(2) %> pounds</h3><br>
+    <h2></h2>
+
+    <% if @pack.blurb %>
+      <h3>"<%=@pack.blurb%>"</h3><br>
+    <% else %>
+      <h3><a href="/packs/<%= @pack.id %>/blurb">Add Blurb!</a></h3><br>
+    <% end %>
     <h2></h2>
 
 <% end %>
