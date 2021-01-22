@@ -19,16 +19,19 @@
         <th>Quantity</th>
         <th>Weight</th>
       </tr>
-      <% @pack.items.each_with_index do |item, index| %>
-      <tr>
-        <td><img style="max-width: 40px" src="<%= item.image_url %>" alt=""></td>
-        <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
-        <td><%= @quantity_array[index] %></td>
-        <td><%= item.weight %>g</td>
-      </tr>
+      <% @pack.user.items.each_with_index do |item, index| %>
+        <% if @pack.items.include?(item) %>
+          <tr>
+            <td><img style="max-width: 40px" src="<%= item.image_url %>" alt=""></td>
+            <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+            <td><%= @quantity_array[index] %></td>
+            <td><%= item.weight %>g</td>
+          </tr>
+        <% end %>
       <% end %>
     </table>
     <h2></h2>
+
     <h3>Packed Items: <%= @pack.items.count %></h3>
     <h3>Total Pack Weight: <%= @total_pack_grams %> grams, <%= @total_pack_pounds.round(2) %> pounds</h3><br>
     <h2></h2>
@@ -66,18 +69,17 @@
         <th>Quantity</th>
         <th>Weight</th>
       </tr>
-      <% @pack.items.each_with_index do |item, index| %>
-      <tr>
-        <td><img style="max-width: 40px" src="<%= item.image_url %>" alt=""></td>
-        <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
-        <td><%= @quantity_array[index] %></td>
-        <td><%= item.weight %>g</td>
-      </tr>
+      <% @pack.user.items.each_with_index do |item, index| %>
+        <% if @pack.items.include?(item) %>
+          <tr>
+            <td><img style="max-width: 40px" src="<%= item.image_url %>" alt=""></td>
+            <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+            <td><%= @quantity_array[index] %></td>
+            <td><%= item.weight %>g</td>
+          </tr>
+        <% end %>
       <% end %>
     </table>
-    <h2></h2>
-    <h3>Packed Items: <%= @pack.items.count %></h3>
-    <h3>Total Pack Weight: <%= @total_pack_grams %> grams, <%= @total_pack_pounds.round(2) %> pounds</h3><br>
     <h2></h2>
 
     <% if @pack.blurb %>
