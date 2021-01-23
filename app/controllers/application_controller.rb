@@ -10,8 +10,9 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
+  #home route brings a user to the login or create account page
   get "/" do
-    #binding.pry
+    #logged_in confirms user is logged in to redirect to user home page
     if logged_in?
       redirect "users/#{current_user.slug}"
     else
@@ -19,8 +20,9 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  #helper methods to check for user logged in and current user
   helpers do
-
+    #uses double negation to return a boolean if the user is logged in
     def logged_in?
       !!current_user
     end
@@ -30,39 +32,6 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id])
     end
 
-  end
-
-  get "/signup" do
-    erb :'users/create_user'
-  end
-
-  post "/signup" do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
-      redirect '/signup'
-    else
-      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-      session[:user_id] = @user.id
-      redirect "users/#{@user.slug}"
-    end
-  end
-
-  get "/login" do
-    erb :'users/login'
-  end
-
-  post "/login" do
-    @user = User.find_by(:email => params[:email])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      erb :'users/show'
-    else
-      redirect "/login"
-    end
-  end
-
-  get '/logout' do
-      session.clear
-      redirect '/login'
   end
 
 end
