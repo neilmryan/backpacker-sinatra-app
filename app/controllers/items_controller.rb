@@ -13,10 +13,14 @@ class ItemsController < ApplicationController
   post '/items' do
     if logged_in?
       @user = current_user
-      @item = Item.new(name: params[:name], description: params[:description], weight: params[:weight], image_url: params[:image_url])
-      @user.items.push(@item)
-      @user.save
-      redirect "users/#{@user.slug}"
+      if params[:name] == "" || params[:description] == "" || params[:weight] == "" || params[:image_url] == ""
+        redirect '/items/new'
+      else
+        @item = Item.new(name: params[:name], description: params[:description], weight: params[:weight], image_url: params[:image_url])
+        @user.items.push(@item)
+        @user.save
+        redirect "users/#{@user.slug}"
+      end
     else
       redirect '/login'
     end

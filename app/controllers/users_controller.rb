@@ -75,7 +75,7 @@ class UsersController < ApplicationController
     get '/login' do
       erb :'users/login'
     end
-    
+
     #route logs in a user using posted data fom the login form and directs to the login page.
     post '/login' do
       @user = User.find_by(:email => params[:email])
