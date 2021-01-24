@@ -14,20 +14,25 @@ class PacksController < ApplicationController
   post '/packs' do
     if logged_in?
       @user = current_user
-      @pack = Pack.new(trip_name: params[:trip_name], length: params[:length], weather: params[:weather], image_url: params[:image_url])
+      if params[:trip_name] == "" || params[:length] == "" || params[:weather] == "" || params[:image_url] == ""
+        flash[:message] = "Sorry, \nall pack fields must be filled in (except for items)."
+        redirect '/packs/new'
+      else
+        @pack = Pack.new(trip_name: params[:trip_name], length: params[:length], weather: params[:weather], image_url: params[:image_url])
 
-      #find items by id and load them into the packs items array
-      @packed_item_ids = params[:pack][:item_ids]
-      @packed_item_ids.each do |item_id|
-        @pack.items << Item.find_by(id: item_id)
+        #find items by id and load them into the packs items array
+        @packed_item_ids = params[:pack][:item_ids]
+        @packed_item_ids.each do |item_id|
+          @pack.items << Item.find_by(id: item_id)
+        end
+
+        #convert quantity array to string, store it in the db and make instance variable in '/packs/:id'
+        @quantity_items = params[:quantity][:items]
+        @pack.quantity_string = @quantity_items.join(",")
+        @user.packs.push(@pack)
+        @user.save
+        redirect "packs/#{@pack.id}"
       end
-
-      #convert quantity array to string, store it in the db and make instance variable in '/packs/:id'
-      @quantity_items = params[:quantity][:items]
-      @pack.quantity_string = @quantity_items.join(",")
-      @user.packs.push(@pack)
-      @user.save
-      redirect "packs/#{@pack.id}"
     else
       redirect '/login'
     end

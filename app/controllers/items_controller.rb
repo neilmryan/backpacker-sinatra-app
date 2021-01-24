@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
     if logged_in?
       @user = current_user
       if params[:name] == "" || params[:description] == "" || params[:weight] == "" || params[:image_url] == ""
+        flash[:message] = "Sorry, \nall fields must be filled in."
         redirect '/items/new'
       else
         @item = Item.new(name: params[:name], description: params[:description], weight: params[:weight], image_url: params[:image_url])
