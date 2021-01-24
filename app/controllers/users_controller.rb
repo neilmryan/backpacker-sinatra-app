@@ -10,9 +10,15 @@ class UsersController < ApplicationController
       if params[:username] == "" || params[:email] == "" || params[:password] == ""
         redirect '/signup'
       else
-        @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-        session[:user_id] = @user.id
-        redirect "users/#{@user.slug}"
+        @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+        if @user.save == false
+          flash[:message] = "Sorry, \nthat username is already in use."
+          redirect '/signup'
+        else
+          @user.save
+          session[:user_id] = @user.id
+          redirect "users/#{@user.slug}"
+        end
       end
     end
 

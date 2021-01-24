@@ -13,10 +13,14 @@
   <a href="/profile_img_edit">New Profile Image</a>
   <a href="/bio_edit">Edit Bio</a>
 
+  <% if @user.image_url %>
   <figure>
     <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
+    <% if @user.bio %>
     <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
+    <% end %>
   </figure>
+  <% end %>
 
   <h2><a href="<%= @user.slug %>/packs">Visit Your Packs Page!</a></h2>
   <h2>Your Items<a href="/items/new">Create New Item</a></h2>
@@ -30,10 +34,14 @@
 
 <% else %>
 
+  <% if @user.image_url %>
   <figure>
     <img id="profile_pic" src="<%= @user.image_url %>" alt="profile picture">
+    <% if @user.bio %>
     <h2 id="bio"><%= "\"#{@user.bio}\""%></h2>
+    <% end %>
   </figure>
+  <% end %>
 
   <h2><a href="<%= @user.slug %>/packs">Visit <%= @user.username %>'s Packs Page!</a></h2>
   <h2 id="inv"><%= @user.username %>'s Items</h2>
