@@ -5,7 +5,7 @@
 
   <% @packs.each do |pack| %>
     <% if pack.image_url != "" %>
-      <img src="<%= pack.image_url %>" alt="pack pic">
+      <img style="border: 2px solid; border-radius: 3%; border-color: rgb(225, 225, 172);" src="<%= pack.image_url %>" alt="pack pic">
     <% end %>
     <h2><a href="/packs/<%= pack.id %>"><%=pack.trip_name%></a></h2>
   <% end %>
@@ -16,7 +16,7 @@
 
   <% @packs.each do |pack| %>
     <% if pack.image_url != "" %>
-      <img src="<%= pack.image_url %>" alt="pack pic">
+      <img style="border: 2px solid; border-radius: 3%; border-color: rgb(225, 225, 172);" src="<%= pack.image_url %>" alt="pack pic">
     <% end %>
     <h2><a href="/packs/<%= pack.id %>"><%=pack.trip_name%></a></h2>
   <% end %>
