@@ -4,5 +4,5 @@ This application provides a CMS to organize and share your backpacking inventory
 
 To use this app, clone, run rake db:migrate and then run shotgun.
 
-#link to license
+Link to license
 https://opensource.org/licenses/MIT
